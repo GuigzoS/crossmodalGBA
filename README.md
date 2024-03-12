@@ -1,4 +1,5 @@
 # Details on GBA implementation and vestibular schwannoma cross-modal segmentation pipeline
+
 This repository summarizes implementation details related to the article "Cross-modal tumor segmentation using generative blending augmentation and self-training" 
 by Guillaume Sallé, Gustavo Andrade-Miranda, Pierre-Henri Conze, Nicolas Boussion, Julien Bert, Dimitris Visvikis and Vincent Jaouen.
 
@@ -15,12 +16,13 @@ CycleGAN, SinGAN and nnU-Net were trained using the official implementations.
 
 ## GBA implementation details
 
-GBA is based on [SinGAN's code](https://github.com/tamarott/SinGAN). 
+GBA is based on [SinGAN's code](https://github.com/tamarott/SinGAN).
 
 - We modified the functions `np2torch` from files `SinGAN/functions.py` and `SinGAN/imresize.py` in order to accept grayscale images correctly.
 - We replaced line 55 from `harmonization.py` : ```out = (1-mask)*real+mask*out``` by ```out = (1-mask)*ref+mask*out```, allowing to harmonize any structures on the `ref` and keep it as background.
+- Please note that the argument `harmonization_start_scale` refers (in our paper) to `K-k*`.
 
-The jupyter notebook describes the process and gives an example on how to apply GBA or its naiver version on a set of images.
+The jupyter notebook `GBA.ipynb` describes the process and gives an example on how to apply GBA or its naiver version on a set of images.
 
 # Citation
 
