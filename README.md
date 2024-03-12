@@ -11,6 +11,25 @@ To download our docker image, you can use the following command :
 To use it, please refer to the [official guideline](https://crossmoda2022.grand-challenge.org/instructions-for-submission/) from CrossMoDA's organisers, 
 section "Test your Docker container".
 
+CycleGAN, SinGAN and nnU-Net were trained using the official implementations.
+
 ## GBA implementation details
+
+GBA is based on [SinGAN's code](https://github.com/tamarott/SinGAN). 
+
+- We modified the functions `np2torch` from files `SinGAN/functions.py` and `SinGAN/imresize.py` in order to accept grayscale images correctly.
+- We replaced line 55 from `harmonization.py` : ```out = (1-mask)*real+mask*out``` by ```out = (1-mask)*ref+mask*out```, allowing to harmonize any structures on the `ref` and keep it as background.
+
+The jupyter notebook describes the process and gives an example on how to apply GBA or its naiver version on a set of images.
+
+# Citation
+
+Please cite this work using `@article{salle2023cross,
+  title={Cross-modal tumor segmentation using generative blending augmentation and self training},
+  author={Sall{\'e}, Guillaume and Conze, Pierre-Henri and Bert, Julien and Boussion, Nicolas and Visvikis, Dimitris and Jaouen, Vincent},
+  journal={arXiv preprint arXiv:2304.01705},
+  year={2023}
+}
+`.
 
 
