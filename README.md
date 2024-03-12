@@ -22,7 +22,7 @@ GBA is based on [SinGAN's code](https://github.com/tamarott/SinGAN).
 - We replaced line 55 from `harmonization.py` : ```out = (1-mask)*real+mask*out``` by ```out = (1-mask)*ref+mask*out```, allowing to harmonize any structures on the `ref` and keep it as background.
 - Please note that the argument `harmonization_start_scale` refers (in our paper) to `K-k*`.
 
-The jupyter notebook `GBA.ipynb` describes the process and gives an example on how to apply GBA or its naiver version on a set of images.
+The jupyter notebook `GBA.ipynb` describes the process and gives an example on how to apply GBA or its naive version on a set of images.
 
 # Citation
 
