@@ -12,17 +12,17 @@ To download our docker image, you can use the following command :
 To use it, please refer to the [official guideline](https://crossmoda2022.grand-challenge.org/instructions-for-submission/) from CrossMoDA's organisers, 
 section "Test your Docker container".
 
-CycleGAN, SinGAN and nnU-Net were trained using the official implementations.
+[CycleGAN](https://github.com/junyanz/pytorch-CycleGAN-and-pix2pix) and [nnU-Net](https://github.com/MIC-DKFZ/nnUNet) were trained using the official implementations without major change.
 
 ## GBA implementation details
 
 GBA is based on [SinGAN's code](https://github.com/tamarott/SinGAN).
 
 - We modified the functions `np2torch` from files `SinGAN/functions.py` and `SinGAN/imresize.py` in order to accept grayscale images correctly.
-- We replaced line 55 from `harmonization.py` : ```out = (1-mask)*real+mask*out``` by ```out = (1-mask)*ref+mask*out```, allowing to harmonize any structures on the `ref` and keep it as background.
+- We replaced line 55 from `harmonization.py` : ```out = (1-mask)*real+mask*out``` by ```out = (1-mask)*ref+mask*out```, allowing to harmonize any structures on the `ref` image and keep it as background.
 - Please note that the argument `harmonization_start_scale` refers (in our paper) to `K-k*`.
 
-The jupyter notebook `GBA.ipynb` describes the process and gives an example on how to apply GBA or its naive version on a set of images.
+The jupyter notebook `GBA.ipynb` describes the process in more details and gives an overview on how to apply GBA or its naive version on a set of images.
 
 # Citation
 
